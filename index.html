@@ -19,6 +19,15 @@
       padding: 1rem;
     }
 
+    header .subtitle {
+      font-size: 0.9rem;
+      color: #ccc;
+      margin-top: 5px;
+      border-top: 1px solid #555;
+      display: inline-block;
+      padding-top: 5px;
+    }
+
     .store-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -72,20 +81,27 @@
     footer p {
       margin: 5px 0;
     }
+
+    @media (max-width: 600px) {
+      .item img {
+        height: 250px;
+      }
+    }
   </style>
 </head>
 <body>
   <header>
     <h1>Pickleball Discount</h1>
-    <p class="subtitle">Note: All items cannot be bought via this store, they must me bought through reaching out on messages</p>
-     <p class="subtitle">This is just to show what we sell, no transactions can be made online</p>
+    <p class="subtitle">Quality gear at unbeatable prices</p>
   </header>
 
   <div class="store-container" id="store"></div>
 
   <footer>
     <h2>Contact Us</h2>
-    <p>Phone: <strong>(910) 674-1040 : Garrett Thompson</strong></p>
+    <p>Email: <strong>info@pickleballdiscount.com</strong></p>
+    <p>Phone: <strong>(555) 123-4567</strong></p>
+    <p>Address: <strong>123 Court Drive, Pickle City, USA</strong></p>
   </footer>
 
   <script>
