@@ -57,6 +57,12 @@
       border-radius: 10px;
     }
 
+    /* Slightly smaller height for images 6 and 7 */
+    .item:nth-child(7) img,
+    .item:nth-child(8) img {
+      height: 280px;
+    }
+
     .item h3 {
       margin: 10px 0 5px;
     }
@@ -80,12 +86,6 @@
 
     footer p {
       margin: 5px 0;
-    }
-
-    @media (max-width: 600px) {
-      .item img {
-        height: 250px;
-      }
     }
   </style>
 </head>
@@ -134,17 +134,4 @@
     }
 
     function updateName(index, newName) {
-      products[index].name = newName;
-    }
-
-    function updatePrice(index, newPrice) {
-      const value = parseFloat(newPrice);
-      if (!isNaN(value)) {
-        products[index].price = value;
-      }
-    }
-
-    renderStore();
-  </script>
-</body>
-</html>
+      p
