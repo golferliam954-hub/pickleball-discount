@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pickleball Discount</title>
+  <title>Simple Online Store</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,23 +11,12 @@
       margin: 0;
       padding: 0;
     }
-
     header {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 1rem;
     }
-
-    header .subtitle {
-      font-size: 0.9rem;
-      color: #ccc;
-      margin-top: 5px;
-      border-top: 1px solid #555;
-      display: inline-block;
-      padding-top: 5px;
-    }
-
     .store-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -36,7 +25,6 @@
       max-width: 1200px;
       margin: auto;
     }
-
     .item {
       background-color: white;
       border-radius: 10px;
@@ -45,76 +33,51 @@
       padding: 15px;
       transition: transform 0.2s;
     }
-
     .item:hover {
       transform: scale(1.03);
     }
-
     .item img {
       width: 100%;
-      height: 300px;
+      height: 200px;
       object-fit: cover;
       border-radius: 10px;
     }
-
-    /* Slightly smaller height for images 6 and 7 */
-    .item:nth-child(7) img,
-    .item:nth-child(8) img {
-      height: 280px;
-    }
-
     .item h3 {
       margin: 10px 0 5px;
     }
-
     .item p {
       color: #555;
       font-size: 1.1em;
     }
-
-    footer {
-      background-color: #333;
-      color: white;
+    .edit-section {
       text-align: center;
-      padding: 2rem 1rem;
-      margin-top: 40px;
+      margin: 20px;
     }
-
-    footer h2 {
-      margin-bottom: 10px;
-    }
-
-    footer p {
-      margin: 5px 0;
+    input {
+      margin: 5px;
+      padding: 5px;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>Pickleball Discount</h1>
-    <p class="subtitle">Quality gear at unbeatable prices</p>
+    <h1>My Online Store</h1>
   </header>
 
   <div class="store-container" id="store"></div>
 
-  <footer>
-    <h2>Contact Us</h2>
-    <p>Email: <strong>info@pickleballdiscount.com</strong></p>
-    <p>Phone: <strong>(555) 123-4567</strong></p>
-    <p>Address: <strong>123 Court Drive, Pickle City, USA</strong></p>
-  </footer>
-
   <script>
     // Editable product data
     const products = [
-      { name: 'Joola Perseus Pro IV 16 mm', price: 220, image: 'image1.webp' },
-      { name: 'Joola Perseus Pro IV 14mm', price: 220, image: 'image1.webp' },
-      { name: 'Joola Hyperion Pro IV 16 mm', price: 220, image: 'image2.webp' },
-      { name: 'Joola Agassi Pro 14mm', price: 220, image: 'image3.webp' },
-      { name: 'Joola 3S Dual Perseus 16mm', price: 140, image: 'image4.webp' },
-      { name: 'Joola 3S Dual Hyperion 16mm', price: 140, image: 'image5.webp' },
-      { name: 'SLK ERA Power 16mm', price: 140, image: 'image6.webp' },
-      { name: '36 Franklin X-40 Pickleballs', price: 70, image: 'image7.webp' }
+      { name: 'Item 1', price: 19.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 2', price: 24.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 3', price: 14.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 4', price: 29.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 5', price: 9.99,  image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 6', price: 39.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 7', price: 11.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 8', price: 16.99, image: 'https://via.placeholder.com/300x200' },
+      { name: 'Item 9', price: 21.99, image: 'https://via.placeholder.com/300x200' }
     ];
 
     const store = document.getElementById('store');
@@ -128,10 +91,29 @@
           <img src="${product.image}" alt="${product.name}">
           <h3 contenteditable="true" oninput="updateName(${index}, this.innerText)">${product.name}</h3>
           <p>$<span contenteditable="true" oninput="updatePrice(${index}, this.innerText)">${product.price.toFixed(2)}</span></p>
+          <input type="text" placeholder="Change image URL" onchange="updateImage(${index}, this.value)">
         `;
         store.appendChild(item);
       });
     }
 
     function updateName(index, newName) {
-      p
+      products[index].name = newName;
+    }
+
+    function updatePrice(index, newPrice) {
+      const value = parseFloat(newPrice);
+      if (!isNaN(value)) {
+        products[index].price = value;
+      }
+    }
+
+    function updateImage(index, newImage) {
+      products[index].image = newImage;
+      renderStore();
+    }
+
+    renderStore();
+  </script>
+</body>
+</html>
