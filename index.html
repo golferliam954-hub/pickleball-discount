@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Simple Online Store</title>
+  <title>Pickleball Discount</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -11,12 +11,14 @@
       margin: 0;
       padding: 0;
     }
+
     header {
       background-color: #333;
       color: white;
       text-align: center;
       padding: 1rem;
     }
+
     .store-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -25,6 +27,7 @@
       max-width: 1200px;
       margin: auto;
     }
+
     .item {
       background-color: white;
       border-radius: 10px;
@@ -33,51 +36,69 @@
       padding: 15px;
       transition: transform 0.2s;
     }
+
     .item:hover {
       transform: scale(1.03);
     }
+
     .item img {
       width: 100%;
-      height: 200px;
+      height: 300px;
       object-fit: cover;
       border-radius: 10px;
     }
+
     .item h3 {
       margin: 10px 0 5px;
     }
+
     .item p {
       color: #555;
       font-size: 1.1em;
     }
-    .edit-section {
+
+    footer {
+      background-color: #333;
+      color: white;
       text-align: center;
-      margin: 20px;
+      padding: 2rem 1rem;
+      margin-top: 40px;
     }
-    input {
-      margin: 5px;
-      padding: 5px;
+
+    footer h2 {
+      margin-bottom: 10px;
+    }
+
+    footer p {
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>My Online Store</h1>
+    <h1>Pickleball Discount</h1>
+    <p class="subtitle">Note: All items cannot be bought via this store, they must me bought through reaching out on messages</p>
+     <p class="subtitle">This is just to show what we sell, no transactions can be made online</p>
   </header>
 
   <div class="store-container" id="store"></div>
 
+  <footer>
+    <h2>Contact Us</h2>
+    <p>Phone: <strong>(910) 674-1040 : Garrett Thompson</strong></p>
+  </footer>
+
   <script>
     // Editable product data
     const products = [
-      { name: 'Item 1', price: 19.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 2', price: 24.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 3', price: 14.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 4', price: 29.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 5', price: 9.99,  image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 6', price: 39.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 7', price: 11.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 8', price: 16.99, image: 'https://via.placeholder.com/300x200' },
-      { name: 'Item 9', price: 21.99, image: 'https://via.placeholder.com/300x200' }
+      { name: 'Joola Perseus Pro IV 16 mm', price: 220, image: 'image1.webp' },
+      { name: 'Joola Perseus Pro IV 14mm', price: 220, image: 'image1.webp' },
+      { name: 'Joola Hyperion Pro IV 16 mm', price: 220, image: 'image2.webp' },
+      { name: 'Joola Agassi Pro 14mm', price: 220, image: 'image3.webp' },
+      { name: 'Joola 3S Dual Perseus 16mm', price: 140, image: 'image4.webp' },
+      { name: 'Joola 3S Dual Hyperion 16mm', price: 140, image: 'image5.webp' },
+      { name: 'SLK ERA Power 16mm', price: 140, image: 'image6.webp' },
+      { name: '36 Franklin X-40 Pickleballs', price: 70, image: 'image7.webp' }
     ];
 
     const store = document.getElementById('store');
@@ -91,7 +112,6 @@
           <img src="${product.image}" alt="${product.name}">
           <h3 contenteditable="true" oninput="updateName(${index}, this.innerText)">${product.name}</h3>
           <p>$<span contenteditable="true" oninput="updatePrice(${index}, this.innerText)">${product.price.toFixed(2)}</span></p>
-          <input type="text" placeholder="Change image URL" onchange="updateImage(${index}, this.value)">
         `;
         store.appendChild(item);
       });
@@ -108,12 +128,8 @@
       }
     }
 
-    function updateImage(index, newImage) {
-      products[index].image = newImage;
-      renderStore();
-    }
-
     renderStore();
   </script>
 </body>
 </html>
+
